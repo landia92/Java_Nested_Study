@@ -2,9 +2,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 public abstract class Nation {
-    protected String continent = "전세계";
-    protected String nationName;
-    protected String capital;
+    public String continent = "전세계";
+    public String nationName;
+    public String capital;
 
     Nation(String nationName, String capital){
         this.nationName = nationName;
@@ -12,13 +12,13 @@ public abstract class Nation {
     }
 
     //출입국 인터페이스
-    interface IImmigration{
+    interface IPassportControl{
         Map<Integer, Person> depart(Map<Integer, Person> citizenMap);
         Map<Integer, Person> enter(Map<Integer, Person> citizenMap);
     }
 
-    static class Citizen implements IImmigration{
-        protected Map<Integer, Person> citizenMap = new HashMap<>();
+    static class Citizen implements IPassportControl, IImmigration{
+        public Map<Integer, Person> citizenMap = new HashMap<>();
         String nationName;
 
         //국가명 가져오기
@@ -27,19 +27,19 @@ public abstract class Nation {
         }
 
         //국민을 담을 Map선언
-        protected Map<Integer, Person> getCitizenMap() {
+        public Map<Integer, Person> getCitizenMap() {
             return citizenMap;
         }
 
-        //국민에 사람(Person)추가하고 사람(Person)에게 국적과 여권번호 부여
-        protected void setCitizenMap(int passportNo, Person person){
+        //국민에 사람(Person) 추가하고 사람(Person)에게 국적과 여권번호 부여
+        public void setCitizenMap(int passportNo, Person person){
             citizenMap.put(passportNo, person);
             person.setNationality(nationName);
             person.setIdNumber(passportNo);
         }
 
         //여권번호로 Map삭제
-        protected void removeCitizenMap(int passportNo){
+        public void removeCitizenMap(int passportNo){
             citizenMap.remove(passportNo);
         }
 
@@ -51,6 +51,16 @@ public abstract class Nation {
         //입국
         public Map<Integer, Person> enter(Map<Integer, Person> citizenMap) {
             return citizenMap;
+        }
+
+        @Override
+        public void setImmigratedPerson() {
+
+        }
+
+        @Override
+        public void getImmigratedPerson() {
+
         }
     }
 
