@@ -17,8 +17,9 @@ public abstract class Nation {
         Map<Integer, Person> enter(Map<Integer, Person> citizenMap);
     }
 
-    static class Citizen implements IPassportControl, IImmigration{
-        public Map<Integer, Person> citizenMap = new HashMap<>();
+    static class Citizen implements IPassportControl{
+        //국민을 담을 Map선언
+        private Map<Integer, Person> citizenMap = new HashMap<>();
         String nationName;
 
         //국가명 가져오기
@@ -26,7 +27,6 @@ public abstract class Nation {
             this.nationName = nation.nationName;
         }
 
-        //국민을 담을 Map선언
         public Map<Integer, Person> getCitizenMap() {
             return citizenMap;
         }
@@ -51,16 +51,6 @@ public abstract class Nation {
         //입국
         public Map<Integer, Person> enter(Map<Integer, Person> citizenMap) {
             return citizenMap;
-        }
-
-        @Override
-        public void setImmigratedPerson() {
-
-        }
-
-        @Override
-        public void getImmigratedPerson() {
-
         }
     }
 
