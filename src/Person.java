@@ -16,4 +16,14 @@ public class Person {
     public void setIdNumber(int passportNo){
         this.passportNo = passportNo;
     }
+    @Override
+    public String toString() {
+        return "Person {" +
+                " name: " + name+
+                " birthday: " + birthday+
+                " sex: " + sex+
+                " nationality: " + nationality+
+                " passportNo: " + passportNo +
+                " }";
+    }
 }

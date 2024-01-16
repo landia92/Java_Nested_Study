@@ -1,3 +1,3 @@
 public interface IImmigration {
-    public void setImmigratedPerson(Nation.Citizen nationDepart, Nation.Citizen nationEnter, Person person);
+    public void immigratedPerson(Nation.Citizen nationDepart, Person person);
 }
